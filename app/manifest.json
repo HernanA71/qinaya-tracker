@@ -1,0 +1,28 @@
+{
+  "name": "Qinaya Tracker",
+  "short_name": "Qinaya",
+  "description": "Sistema de gestión para instalación de licencias Qinaya en colegios de Bogotá",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#3B82F6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "es",
+  "scope": "/",
+  "prefer_related_applications": false
+}
