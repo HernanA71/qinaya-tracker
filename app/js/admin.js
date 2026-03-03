@@ -836,10 +836,10 @@ const AdminDashboard = {
     const m = this.metrics;
 
     container.innerHTML = `
-  < div class="page-header" >
+      <div class="page-header">
         <h1 class="page-title">📋 Reportes</h1>
         <p class="page-subtitle">Generación y descarga de reportes del proyecto (v3.7)</p>
-      </div >
+      </div>
 
   <div class="dashboard-grid">
     <!-- Fila 1 -->
@@ -899,7 +899,7 @@ const AdminDashboard = {
       </div>
     </div>
   </div>
-`;
+    `;
 
     this.attachEvents();
   },
@@ -914,10 +914,10 @@ const AdminDashboard = {
     const m = this.metrics;
 
     container.innerHTML = `
-  < div class="page-header" >
+      <div class="page-header">
         <h1 class="page-title">📊 Estadísticas</h1>
         <p class="page-subtitle">Análisis detallado del proyecto</p>
-      </div >
+      </div>
 
   <div class="dashboard-grid">
     <!-- Resumen General -->
@@ -1025,7 +1025,7 @@ const AdminDashboard = {
       </div>
     </div>
   </div>
-`;
+    `;
 
     // Gráficos
     Charts.renderPhaseDonut('phaseChart', m.byPhase);
