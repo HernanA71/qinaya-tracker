@@ -181,6 +181,9 @@ const App = {
               <button class="nav-tab" data-tab="statistics">
                 <span>📊</span> Estadísticas
               </button>
+              <button class="nav-tab" data-tab="bitacora">
+                <span>📝</span> Bitácora del Día
+              </button>
             </nav>
           </div>
           
