@@ -357,10 +357,10 @@ const AdminDashboard = {
     const m = this.metrics;
 
     container.innerHTML = `
-  < div class="page-header" >
+      <div class="page-header">
         <h1 class="page-title">Panel de Control</h1>
         <p class="page-subtitle">Seguimiento en tiempo real del despliegue de Qinaya</p>
-      </div >
+      </div>
 
   <div class="dashboard-grid">
     <!-- Hero Card - Progreso Global -->
