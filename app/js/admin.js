@@ -79,6 +79,11 @@ const AdminDashboard = {
       if (resp && resp.success) schools = resp.data;
     } catch (e) { }
 
+    // Abort if the user changed the tab while we were fetching schools
+    if (this.currentView !== 'bitacora') {
+      return;
+    }
+
     const todayVal = new Date().toISOString().split('T')[0];
 
     container.innerHTML = `
@@ -1255,28 +1260,34 @@ const AdminDashboard = {
       });
     });
 
-    // Tabs de navegación
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const view = tab.dataset.tab;
-        this.changeView(view);
+    // Tabs de navegación (vinculados una sola vez para evitar duplicaciones que solapen vistas asíncronas)
+    if (!this.navEventsBound) {
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const view = tab.dataset.tab;
+          if (this.currentView !== view) {
+            this.changeView(view);
+          }
+        });
       });
-    });
 
-    // Mobile nav
-    document.querySelectorAll('.mobile-nav-item[data-tab]').forEach(item => {
-      item.addEventListener('click', () => {
-        const view = item.dataset.tab;
-        if (view === 'technicians') {
-          // Scroll a la sección de técnicos
-          document.getElementById('technician-grid')?.scrollIntoView({ behavior: 'smooth' });
-        } else if (view === 'alerts') {
-          document.getElementById('alert-list')?.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          this.changeView(view);
-        }
+      // Mobile nav
+      document.querySelectorAll('.mobile-nav-item[data-tab]').forEach(item => {
+        item.addEventListener('click', () => {
+          const view = item.dataset.tab;
+          if (view === 'technicians') {
+            // Scroll a la sección de técnicos
+            document.getElementById('technician-grid')?.scrollIntoView({ behavior: 'smooth' });
+          } else if (view === 'alerts') {
+            document.getElementById('alert-list')?.scrollIntoView({ behavior: 'smooth' });
+          } else if (this.currentView !== view) {
+            this.changeView(view);
+          }
+        });
       });
-    });
+
+      this.navEventsBound = true;
+    }
   },
 
   /**
